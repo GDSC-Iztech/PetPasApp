@@ -1,11 +1,11 @@
    # Ürün ile İlgili Bilgiler
  ## Takım Elemanları
-  Mert Karahan 
-  Mert Eren Tavan 
-  Melih Çakmak
-  Tuna Tezcan
-  Tugberk 
-  Baran Kapan -Tasarım
+  Mert Karahan  
+  Mert Eren Tavan   
+  Melih Çakmak  
+  Tuna Tezcan  
+  Tugberk  
+  Baran Kapan -Tasarım  
 
  ## Ürün İsmi
   PetPas 
