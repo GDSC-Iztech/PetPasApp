@@ -5,7 +5,7 @@
   Melih Çakmak  
   Tuna Tezcan  
   Tugberk Varoğlu  
-  Emir Kağan Yiğit
+  Emir Kağan Yiğit  
   Baran Kapan -Tasarım  
 
  ## Ürün İsmi
