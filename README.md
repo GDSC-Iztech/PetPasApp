@@ -4,7 +4,7 @@
   Mert Eren Tavan   
   Melih Çakmak  
   Tuna Tezcan  
-  Tugberk  
+  Tugberk Varoğlu  
   Baran Kapan -Tasarım  
 
  ## Ürün İsmi
