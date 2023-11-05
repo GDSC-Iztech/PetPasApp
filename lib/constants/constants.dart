@@ -12,8 +12,14 @@ class appColor {
 }
 
 class textStyles {
-  static final headerTextStyle =
-      TextStyle(fontSize: 17, color: Colors.white, fontFamily: "ProductSans");
+  static final headerTextStyle = TextStyle(
+    fontSize: 17,
+    color: Colors.white,
+    fontFamily: "ProductSans",
+  );
   static final fieldNameTextStyle = TextStyle(
-      fontSize: 16, color: appColor.titleWhite, fontFamily: "ProductSans");
+    fontSize: 16,
+    color: appColor.titleWhite,
+    fontFamily: "ProductSans",
+  );
 }
