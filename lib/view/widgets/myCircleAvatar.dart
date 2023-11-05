@@ -16,9 +16,9 @@ class MyCircleAvatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       backgroundColor: backgroundColor,
-      maxRadius: 75,
+      maxRadius: radius + border,
       child: CircleAvatar(
-        maxRadius: 70,
+        maxRadius: radius,
         backgroundImage: backgroundImage,
       ),
     );
