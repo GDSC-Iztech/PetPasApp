@@ -20,6 +20,30 @@ class _CalenderScreenState extends State<CalenderScreen> {
   List<DateTime> eachDateTime = [];
   DateTimeRange? rangeDateTime;
 
+  Card RoundedCard() {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      color: whiteGray,
+      child: const Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                16.0, 8.0, 16.0, 8.0), // Üstten 8 ve alttan 8 padding ekledik
+            child: Text('Aşı Adı: '),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                16.0, 8.0, 16.0, 8.0), // Üstten 8 ve alttan 8 padding ekledik
+            child: Text('--/--/----'),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +103,28 @@ class _CalenderScreenState extends State<CalenderScreen> {
               ),
             ],
           ),
-          Expanded(child: Container()), // Spacer widget
+          const SizedBox(height: 15),
+          const Expanded(child: Divider()),
+          const SizedBox(height: 15),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.40,
+              color: myBlue,
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Text(
+                    "Geçmiş Aşılar",
+                    style: fieldNameTextStyle,
+                  ),
+                  const SizedBox(height: 15),
+                  RoundedCard(),
+                  RoundedCard(),
+                  RoundedCard(),
+                ],
+              )),
+
+          Expanded(child: Container()),
           ElevatedButton(
             onPressed: () async {
               var result = await showModalBottomSheet(
