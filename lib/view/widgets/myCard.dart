@@ -7,9 +7,8 @@ class MyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.white),
-      padding: EdgeInsets.only(left: 13, top: 13),
+    return Padding(
+      padding: EdgeInsets.only(left: 13, top: 17, right: 3),
       child: Row(
         children: [
           MyCircleAvatar(
@@ -22,7 +21,7 @@ class MyCard extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              height: 80,
+              height: 90,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(53),
                 color: appColor.blue,
