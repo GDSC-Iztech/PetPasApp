@@ -13,7 +13,12 @@ class CalenderScreen extends StatefulWidget {
 class _CalenderScreenState extends State<CalenderScreen> {
   final TextStyle fieldNameTextStyle =
       textStyles.fieldNameTextStyle.copyWith(fontSize: 20);
+
   final Color myBlue = appColor.blue;
+  final Color whiteGray = appColor.whiteGray;
+
+  List<DateTime> eachDateTime = [];
+  DateTimeRange? rangeDateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -37,50 +42,75 @@ class _CalenderScreenState extends State<CalenderScreen> {
       ),
       backgroundColor: myBlue,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          const SizedBox(height: 20), // Add some space at the top
+          // Add some space at the top
+          const SizedBox(height: 20),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                flex: 2,
-                child: MyCircleAvatar(
-                  border: 5,
-                  radius: 80,
-                  backgroundImage: AssetImage("assets/cat.png"),
-                  backgroundColor: Colors.white,
-                ),
-              ),
-              Expanded(
-                flex: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Ad: Odin",
-                      style: fieldNameTextStyle,
-                    ),
-                    Text(
-                      "Tür: Sarman",
-                      style: fieldNameTextStyle,
-                    ),
-                    Text(
-                      "Yaş: 2",
-                      style: fieldNameTextStyle,
-                    ),
-                    Text(
-                      "Veteriner: Orhan Çakir",
-                      style: fieldNameTextStyle,
-                    ),
-                  ],
-                ),
+              MyCircleAvatar(
+                border: 5,
+                radius: 80,
+                backgroundImage: const AssetImage("assets/cat.png"),
+                backgroundColor: whiteGray,
               ),
             ],
           ),
-          const Expanded(
-            child: Center(
-              child: CalenderWidget(),
+          const SizedBox(height: 10),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                "Ad: Odin",
+                style: fieldNameTextStyle,
+              ),
+              Text(
+                "Tür: Sarman",
+                style: fieldNameTextStyle,
+              ),
+              Text(
+                "Yaş: 2",
+                style: fieldNameTextStyle,
+              ),
+              Text(
+                "Veteriner: Orhan Çakir",
+                style: fieldNameTextStyle,
+              ),
+            ],
+          ),
+          Expanded(child: Container()), // Spacer widget
+          ElevatedButton(
+            onPressed: () async {
+              var result = await showModalBottomSheet(
+                isScrollControlled: true,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.vertical(
+                    top: Radius.circular(20),
+                    bottom: Radius.zero,
+                  ),
+                ),
+                context: context,
+                builder: (context) => const CalenderWidget(),
+              );
+              if (result != null) {
+                if (result is DateTimeRange) {
+                  setState(() {
+                    rangeDateTime = result;
+                  });
+                }
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: whiteGray,
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(20),
+                  bottom: Radius.zero,
+                ),
+              ),
             ),
+            child: const Text('Takvim', style: TextStyle(fontSize: 20)),
           ),
         ],
       ),
@@ -96,24 +126,22 @@ class CalenderWidget extends StatefulWidget {
 }
 
 class _CalenderWidgetState extends State<CalenderWidget> {
+  get whiteGray => appColor.whiteGray;
+  get black => appColor.black;
+
   @override
   Widget build(BuildContext context) {
-    return BottomSheet(
-      onClosing: () {},
-      builder: (BuildContext context) {
-        return SizedBox(
-          width: MediaQuery.of(context).size.width * 0.95,
-          child: customCalender(),
-        );
-      },
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: customCalender(),
     );
   }
 
   CustomCalenderPicker customCalender() {
-    return const CustomCalenderPicker(
-      buttonColor: Colors.black,
-      selectedColor: Colors.black,
-      selectedFontColor: Colors.black,
+    return CustomCalenderPicker(
+      buttonColor: black,
+      selectedColor: black.withOpacity(0.3),
+      selectedFontColor: whiteGray,
       buttonText: "Devam et",
     );
   }
