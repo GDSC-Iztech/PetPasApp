@@ -74,8 +74,10 @@ class _PetListScreenState extends State<PetListScreen> {
     );
   }
 
+// hayvan listesini ve arama ozelligine sahip widget.
   ListView listViewPetList(bool shouldScroll) {
     return ListView.builder(
+      // eger item sayisi ekranin boyunu asmiyorsa scrollabe ozelligi kapatiliyor.
       physics: shouldScroll ? const NeverScrollableScrollPhysics() : null,
       itemCount: filteredPets.length,
       itemBuilder: (context, index) {
