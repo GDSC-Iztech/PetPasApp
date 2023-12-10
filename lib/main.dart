@@ -4,6 +4,7 @@ import 'package:petpas/view/screens/passportScreen.dart';
 import 'package:petpas/view/screens/petAddToList.dart';
 import 'package:petpas/view/screens/petListScreen.dart';
 import 'package:petpas/view/screens/profileScreen.dart';
+import 'package:petpas/view/screens/signInScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PetAddToList(),
+      home: const SignInScreen(title: "A"),
     );
   }
 }
