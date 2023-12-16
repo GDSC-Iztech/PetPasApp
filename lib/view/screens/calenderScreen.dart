@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:petpas/constants/constants.dart';
 import '/view/widgets/myCircleAvatar.dart';
 import 'package:custom_calender_picker/custom_calender_picker.dart';
-import 'AddVaccineScreen.dart';
 
 class CalenderScreen extends StatefulWidget {
   const CalenderScreen({Key? key}) : super(key: key);
@@ -195,6 +194,75 @@ class _CalenderScreenState extends State<CalenderScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class VaccineAddDialog extends StatefulWidget {
+  final DateTime selectedDate;
+
+  const VaccineAddDialog({Key? key, required this.selectedDate}) : super(key: key);
+
+  @override
+  _VaccineAddDialogState createState() => _VaccineAddDialogState();
+}
+
+class _VaccineAddDialogState extends State<VaccineAddDialog> {
+  late String vaccineName;
+  late String petName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('Aşı Ekleme Ekranı'),
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  vaccineName = value;
+                });
+              },
+              decoration: InputDecoration(labelText: 'Aşı Adı'),
+            ),
+            TextField(
+              onChanged: (value) {
+                setState(() {
+                  petName = value;
+                });
+              },
+              decoration: InputDecoration(labelText: 'Hayvan Adı'),
+            ),
+            SizedBox(height: 16),
+            Text('Tarih: ${widget.selectedDate.toLocal()}'.split(' ')[0]),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Add the vaccine information to your data source
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Aşı Ekle'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('İptal'),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
