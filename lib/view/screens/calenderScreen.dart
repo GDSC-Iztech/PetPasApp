@@ -101,14 +101,29 @@ class _CalenderScreenState extends State<CalenderScreen> {
                 "Veteriner: Orhan Çakir",
                 style: fieldNameTextStyle,
               ),
+              ElevatedButton(
+                onPressed: () {
+                  // Butona tıklama işlemi buraya eklenir
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: whiteGray,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: Text(
+                  "Hayvan Pasaportu",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 15),
           const Expanded(child: Divider()),
-          const SizedBox(height: 15),
+          const SizedBox(height: 10),
           Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.40,
+              height: MediaQuery.of(context).size.height * 0.30,
               color: myBlue,
               alignment: Alignment.center,
               child: Column(
@@ -123,71 +138,36 @@ class _CalenderScreenState extends State<CalenderScreen> {
                   RoundedCard(),
                 ],
               )),
-
-          Expanded(child: Container()),
-          ElevatedButton(
-            onPressed: () async {
-              var result = await showModalBottomSheet(
-                isScrollControlled: true,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                    bottom: Radius.zero,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.1,
+            color: myBlue,
+            alignment: Alignment.bottomCenter,
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => addVaccineScreen()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: whiteGray,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text(
+                    "Takvim",
+                    style: TextStyle(color: Colors.black),
                   ),
                 ),
-                context: context,
-                builder: (context) => const CalenderWidget(),
-              );
-              if (result != null) {
-                if (result is DateTimeRange) {
-                  setState(() {
-                    rangeDateTime = result;
-                  });
-                }
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: whiteGray,
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(20),
-                  bottom: Radius.zero,
-                ),
-              ),
+              ],
             ),
-            child: const Text('Takvim', style: TextStyle(fontSize: 20)),
           ),
         ],
       ),
-    );
-  }
-}
-
-class CalenderWidget extends StatefulWidget {
-  const CalenderWidget({Key? key}) : super(key: key);
-
-  @override
-  State<CalenderWidget> createState() => _CalenderWidgetState();
-}
-
-class _CalenderWidgetState extends State<CalenderWidget> {
-  get whiteGray => appColor.whiteGray;
-  get black => appColor.black;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: customCalender(),
-    );
-  }
-
-  CustomCalenderPicker customCalender() {
-    return CustomCalenderPicker(
-      buttonColor: black,
-      selectedColor: black.withOpacity(0.3),
-      selectedFontColor: whiteGray,
-      buttonText: "Devam et",
     );
   }
 }
