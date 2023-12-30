@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -110,12 +111,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      primary: HexColor("#53A9C6"),
+                      backgroundColor: HexColor("#53A9C6"),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Kaydet eylemi gerçekleştirilir
-                      }
+                      //todo: üye olma işlemi
+                      context.go('/profile');
                     },
                     child: const Text(
                       'Üye Ol',

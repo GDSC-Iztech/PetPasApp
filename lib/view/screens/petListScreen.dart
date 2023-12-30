@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:petpas/view/widgets/petCardInList.dart';
 
 class PetListScreen extends StatefulWidget {
@@ -49,6 +50,12 @@ class _PetListScreenState extends State<PetListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Hayvan Listesi"),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            context.go('/profile');
+          },
+        ),
       ),
       body: Column(
         children: [
@@ -68,6 +75,12 @@ class _PetListScreenState extends State<PetListScreen> {
           ),
           Expanded(
             child: listViewPetList(shouldScroll),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/petAdd');
+            },
+            child: const Text('Hayvan Ekle'),
           ),
         ],
       ),

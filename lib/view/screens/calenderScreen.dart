@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
 import '/view/widgets/myCircleAvatar.dart';
-import 'package:custom_calender_picker/custom_calender_picker.dart';
 
 class CalenderScreen extends StatefulWidget {
   const CalenderScreen({Key? key}) : super(key: key);
@@ -37,6 +37,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
       });
 
       // Show vaccine add dialog after selecting date
+      // ignore: use_build_context_synchronously
       _showVaccineAddDialog(context);
     }
   }
@@ -56,17 +57,15 @@ class _CalenderScreenState extends State<CalenderScreen> {
         borderRadius: BorderRadius.circular(10.0),
       ),
       color: whiteGray,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                16.0, 8.0, 16.0, 8.0),
+            padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
             child: Text('Aşı Adı: '),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                16.0, 8.0, 16.0, 8.0),
+            padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
             child: Text('--/--/----'),
           ),
         ],
@@ -81,7 +80,7 @@ class _CalenderScreenState extends State<CalenderScreen> {
         backgroundColor: myBlue,
         leading: IconButton(
           onPressed: () {
-            // Handle back button press
+            context.go('/profile');
           },
           icon: const Icon(Icons.arrow_back),
         ),
@@ -132,15 +131,15 @@ class _CalenderScreenState extends State<CalenderScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Handle button press
+                  context.go('/passport');
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: whiteGray,
+                  backgroundColor: whiteGray,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "Hayvan Pasaportu",
                   style: TextStyle(color: Colors.black),
                 ),
@@ -180,12 +179,12 @@ class _CalenderScreenState extends State<CalenderScreen> {
                     _selectDate(context);
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: whiteGray,
+                    backgroundColor: whiteGray,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Aşı Ekle",
                     style: TextStyle(color: Colors.black),
                   ),
@@ -202,9 +201,11 @@ class _CalenderScreenState extends State<CalenderScreen> {
 class VaccineAddDialog extends StatefulWidget {
   final DateTime selectedDate;
 
-  const VaccineAddDialog({Key? key, required this.selectedDate}) : super(key: key);
+  const VaccineAddDialog({Key? key, required this.selectedDate})
+      : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _VaccineAddDialogState createState() => _VaccineAddDialogState();
 }
 
@@ -223,14 +224,14 @@ class _VaccineAddDialogState extends State<VaccineAddDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Aşı Ekleme Ekranı'),
+            const Text('Aşı Ekleme Ekranı'),
             TextField(
               onChanged: (value) {
                 setState(() {
                   vaccineName = value;
                 });
               },
-              decoration: InputDecoration(labelText: 'Aşı Adı'),
+              decoration: const InputDecoration(labelText: 'Aşı Adı'),
             ),
             TextField(
               onChanged: (value) {
@@ -238,26 +239,25 @@ class _VaccineAddDialogState extends State<VaccineAddDialog> {
                   petName = value;
                 });
               },
-              decoration: InputDecoration(labelText: 'Hayvan Adı'),
+              decoration: const InputDecoration(labelText: 'Hayvan Adı'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text('Tarih: ${widget.selectedDate.toLocal()}'.split(' ')[0]),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: Add the vaccine information to your data source
                     Navigator.of(context).pop();
                   },
-                  child: Text('Aşı Ekle'),
+                  child: const Text('Aşı Ekle'),
                 ),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('İptal'),
+                  child: const Text('İptal'),
                 ),
               ],
             ),

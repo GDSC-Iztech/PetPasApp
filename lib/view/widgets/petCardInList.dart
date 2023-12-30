@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
 
 class PetCardInList extends StatefulWidget {
@@ -30,7 +31,7 @@ class _PetCardInListState extends State<PetCardInList> {
             color: Colors.white,
           ),
           onPressed: () {
-            // hangi hayvana basilirsa onun pasaportuna gidecek
+            context.go('/passport');
           },
         ),
       ),

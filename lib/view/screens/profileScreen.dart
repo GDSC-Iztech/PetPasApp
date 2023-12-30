@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
 import 'package:petpas/view/widgets/myCard.dart';
 import 'package:petpas/view/widgets/myCircleAvatar.dart';
@@ -58,7 +59,9 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 47,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.go('/petList');
+                      },
                       child: Text(
                         "Hayvanlarım",
                         style: TextStyle(fontSize: 20, color: appColor.blue),
@@ -67,7 +70,9 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 47,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        context.go('/calender');
+                      },
                       child: Text(
                         "Gelecek Aşılar",
                         style: TextStyle(fontSize: 20, color: appColor.blue),

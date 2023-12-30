@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -81,9 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       backgroundColor: HexColor("#53A9C6"),
                     ),
                     onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // Kaydet eylemi gerçekleştirilir
-                      }
+                      context.go('/petList');
                     },
                     child: const Text(
                       'Giriş Yap',
