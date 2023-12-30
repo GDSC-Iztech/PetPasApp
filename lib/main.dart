@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(title: 'PetPas', routerConfig: _router);
   }
 
-  final GoRouter _router = GoRouter(initialLocation: '/profile', routes: [
+  final GoRouter _router = GoRouter(initialLocation: '/signIn', routes: [
     GoRoute(
       path: '/signIn',
       pageBuilder: (context, state) => const MaterialPage(
