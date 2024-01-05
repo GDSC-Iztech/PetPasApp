@@ -82,7 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       backgroundColor: HexColor("#53A9C6"),
                     ),
                     onPressed: () {
-                      context.go('/petList');
+                      context.go('/home');
                     },
                     child: const Text(
                       'Giriş Yap',

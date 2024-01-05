@@ -20,7 +20,9 @@ class ProfileScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.go('/home');
+                  },
                   icon: const Icon(Icons.arrow_back_ios),
                   color: Colors.white,
                   iconSize: 40,

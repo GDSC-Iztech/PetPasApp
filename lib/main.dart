@@ -7,6 +7,7 @@ import 'package:petpas/view/screens/petListScreen.dart';
 import 'package:petpas/view/screens/profileScreen.dart';
 import 'package:petpas/view/screens/signInScreen.dart';
 import 'package:petpas/view/screens/signUpScreen.dart';
+import 'package:petpas/view/screens/homeScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
   }
 
   final GoRouter _router = GoRouter(initialLocation: '/signIn', routes: [
+    GoRoute(
+      path: '/home',
+      pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
+    ),
     GoRoute(
       path: '/signIn',
       pageBuilder: (context, state) => const MaterialPage(
