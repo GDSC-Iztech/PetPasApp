@@ -77,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ListTile(
               title: const Text('Cikis'),
               onTap: () {
+                context.go('/signIn');
                 // log out
               },
             ),

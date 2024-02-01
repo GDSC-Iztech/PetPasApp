@@ -59,9 +59,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value == null ||
-                          value.trim().isEmpty ||
-                          !value.contains("@")) {
+                      if (value == null || value.trim().isEmpty || !value.contains("@")) {
                         return 'Lütfen geçerli bir email giriniz.';
                       }
                       return null;
@@ -106,16 +104,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       onPressed: () async {
                         try {
                           _submit();
-                          final userCredentials =
-                              await _firebase.signInWithEmailAndPassword(
-                                  email: _enteredEmail,
-                                  password: _enteredPassword);
+                          final userCredentials = await _firebase.signInWithEmailAndPassword(email: _enteredEmail, password: _enteredPassword);
                           context.go('/home');
                         } on FirebaseAuthException catch (e) {
                           ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content:
-                                  Text(e.message ?? "Authentication Failed.")));
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message ?? "Authentication Failed.")));
                         }
                       },
                       child: const Text(

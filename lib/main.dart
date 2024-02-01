@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(title: 'PetPas', routerConfig: _router);
   }
 
-  final GoRouter _router = GoRouter(initialLocation: '/signIn', routes: [
+  final GoRouter _router = GoRouter(initialLocation: '/signUp', routes: [
     GoRoute(
       path: '/home',
       pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
@@ -47,28 +47,23 @@ class MyApp extends StatelessWidget {
     ),
     GoRoute(
       path: '/petList',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: PetListScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: PetListScreen()),
     ),
     GoRoute(
       path: '/petAdd',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: PetAddToList()),
+      pageBuilder: (context, state) => const MaterialPage(child: PetAddToList()),
     ),
     GoRoute(
       path: '/calender',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: CalenderScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: CalenderScreen()),
     ),
     GoRoute(
       path: '/passport',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: PassportScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: PassportScreen()),
     ),
     GoRoute(
       path: '/profile',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: ProfileScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: ProfileScreen()),
     ),
   ]);
 }
