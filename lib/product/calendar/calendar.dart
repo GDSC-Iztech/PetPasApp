@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
-import '/view/widgets/myCircleAvatar.dart';
+import '../../widgets/myCircleAvatar.dart';
 
-class CalenderScreen extends StatefulWidget {
-  const CalenderScreen({Key? key}) : super(key: key);
+class CalendarView extends StatefulWidget {
+  const CalendarView({Key? key}) : super(key: key);
 
   @override
-  State<CalenderScreen> createState() => _CalenderScreenState();
+  State<CalendarView> createState() => _CalendarViewState();
 }
 
-class _CalenderScreenState extends State<CalenderScreen> {
+class _CalendarViewState extends State<CalendarView> {
   final TextStyle fieldNameTextStyle =
       textStyles.fieldNameTextStyle.copyWith(fontSize: 20);
 

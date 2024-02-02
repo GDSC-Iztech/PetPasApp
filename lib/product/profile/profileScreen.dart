@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
-import 'package:petpas/view/widgets/myCard.dart';
-import 'package:petpas/view/widgets/myCircleAvatar.dart';
+import 'package:petpas/widgets/myCard.dart';
+import 'package:petpas/widgets/myCircleAvatar.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

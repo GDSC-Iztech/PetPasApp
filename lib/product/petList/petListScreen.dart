@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:petpas/view/widgets/petCardInList.dart';
+import 'package:petpas/widgets/petCardInList.dart';
 
 class PetListScreen extends StatefulWidget {
   const PetListScreen({Key? key}) : super(key: key);

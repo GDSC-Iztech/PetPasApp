@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
-import "package:petpas/view/widgets/listAddImage.dart";
-import "package:petpas/view/widgets/listAddTextField.dart";
+import 'package:petpas/widgets/listAddImage.dart';
+import 'package:petpas/widgets/listAddTextField.dart';
 
 class PetAddToList extends StatefulWidget {
   const PetAddToList({super.key});

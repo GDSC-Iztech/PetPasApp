@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:petpas/constants/constants.dart';
-import 'package:petpas/view/widgets/petCard.dart';
+import 'package:petpas/widgets/petCard.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,6 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             ListTile(
+              // gelecek asilari gosteren bir takvim olmali.
+              // takvim sayfasi su an hayvanin profilini gosteriyor.
               title: const Text('Takvim'),
               onTap: () {
                 context.go('/calender');

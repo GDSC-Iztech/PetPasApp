@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:petpas/constants/constants.dart';
-import 'package:petpas/view/widgets/myCircleAvatar.dart';
-import 'package:petpas/view/widgets/myTextForm.dart';
+import 'package:petpas/widgets/myCircleAvatar.dart';
+import 'package:petpas/widgets/myTextForm.dart';
 
 class PassportScreen extends StatefulWidget {
   const PassportScreen({super.key});
