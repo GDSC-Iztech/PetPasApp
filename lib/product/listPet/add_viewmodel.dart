@@ -23,6 +23,7 @@ abstract class PetAddListViewmodel extends State<PetAddToList> {
         imageUrl: imageController.text,
       ),
     );
+    setState(() {});
   }
 
   @override

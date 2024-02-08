@@ -36,7 +36,9 @@ class _PetListScreenState extends ListViewmodel {
             ),
           ),
           Expanded(
-            child: PetList(filteredPets: filteredPets),
+            child: PetList(
+              filteredPets: filteredPets,
+            ),
           ),
           ElevatedButton(
             onPressed: () {

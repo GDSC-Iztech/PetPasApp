@@ -73,11 +73,13 @@ class _ProfileViewState extends ProfileViewModel {
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(53.0),
-                    topRight: Radius.circular(53.0),
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
                   ),
                 ),
-                child: PetList(filteredPets: listManager.allPets),
+                child: PetList(
+                  filteredPets: listManager.allPets,
+                ),
               ),
             )
           ],

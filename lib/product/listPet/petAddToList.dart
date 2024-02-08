@@ -1,11 +1,13 @@
-import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
-import "package:petpas/widgets/myTextForm.dart";
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:petpas/manager/petlistmanager/petmodel.dart';
 
+import '../../manager/petlistmanager/list_manager.dart';
 import 'add_viewmodel.dart';
+import 'petAddToList.dart';
 
 class PetAddToList extends StatefulWidget {
-  const PetAddToList({super.key});
+  const PetAddToList({Key? key}) : super(key: key);
 
   @override
   State<PetAddToList> createState() => _PetAddToListState();
@@ -19,8 +21,6 @@ class _PetAddToListState extends PetAddListViewmodel {
         title: Text("Hayvan Ekle"),
       ),
       body: Column(
-        // PetModel'e esdeger veriler burada eklenecek
-
         children: [
           const Center(child: CircleAvatar()),
           TextFormField(
@@ -44,10 +44,15 @@ class _PetAddToListState extends PetAddListViewmodel {
             decoration: InputDecoration(labelText: "Image"),
           ),
           TextButton(
-              onPressed: addPet,
-              child: const Text(
-                "Ekle",
-              ))
+            onPressed: () {
+              // Add the new pet
+              addPet;
+
+              // Navigate back to the previous screen
+              context.push('/petList');
+            },
+            child: const Text("Ekle"),
+          ),
         ],
       ),
     );
