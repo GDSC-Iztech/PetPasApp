@@ -1,95 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:petpas/constants/constants.dart';
-import 'package:petpas/widgets/myCard.dart';
-import 'package:petpas/widgets/myCircleAvatar.dart';
+import '../../widgets/petList.dart';
+import 'profile_viewmodel.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileView extends StatefulWidget {
+  const ProfileView({super.key});
 
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends ProfileViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appColor.blue,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor:
+          Colors.blue, // Assuming you have appColor.blue defined elsewhere
       body: SafeArea(
         child: Column(
           children: [
             //header
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    context.go('/home');
-                  },
-                  icon: const Icon(Icons.arrow_back_ios),
-                  color: Colors.white,
-                  iconSize: 40,
-                ),
-                const Column(
-                  children: [
-                    MyCircleAvatar(
-                        border: 5,
-                        radius: 80,
-                        backgroundImage: AssetImage("assets/cat.png"),
-                        backgroundColor: Colors.white),
-                    Text(
-                      "Mert Karahan",
-                      style: TextStyle(color: Colors.white, fontSize: 30),
-                    )
-                  ],
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.more_horiz,
-                    color: Colors.white,
-                  ),
-                  iconSize: 40,
-                )
-              ],
+            const CircleAvatar(
+              radius: 80,
+              // backgroundImage: AssetImage(widget.imageUrl!),
+              // user profile image
+              backgroundColor: Colors.white,
             ),
+            Text("username"),
             const SizedBox(
               height: 25,
             ),
             //Buttons
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
                   height: 47,
                   child: ElevatedButton(
-                      onPressed: () {
-                        context.go('/petList');
-                      },
-                      child: Text(
-                        "Hayvanlarım",
-                        style: TextStyle(fontSize: 20, color: appColor.blue),
-                      )),
+                    onPressed: () {
+                      // Navigate to pet list screen
+                      context.push('/petList');
+                    },
+                    child: const Text(
+                      "Hayvanlarım",
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 47,
                   child: ElevatedButton(
-                      onPressed: () {
-                        context.go('/calender');
-                      },
-                      child: Text(
-                        "Gelecek Aşılar",
-                        style: TextStyle(fontSize: 20, color: appColor.blue),
-                      )),
+                    onPressed: () {
+                      // Navigate to calendar screen
+                      Navigator.pushNamed(context, '/calendar');
+                    },
+                    child: const Text(
+                      "Gelecek Aşılar",
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
+                    ),
+                  ),
                 ),
               ],
             ),
 
-            //Container
-            // MyCard(), MyCard(), MyCard(), MyCard(), MyCard(), MyCard()
             Expanded(
               child: Container(
-                // ignore: prefer_const_constructors
-                padding: EdgeInsets.only(top: 6),
-                margin: EdgeInsets.only(top: 53),
+                padding: const EdgeInsets.only(top: 6),
+                margin: const EdgeInsets.only(top: 53),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
@@ -97,9 +77,7 @@ class ProfileScreen extends StatelessWidget {
                     topRight: Radius.circular(53.0),
                   ),
                 ),
-                child: ListView(
-                  children: const [MyCard(), MyCard(), MyCard(), MyCard()],
-                ),
+                child: PetList(filteredPets: listManager.allPets),
               ),
             )
           ],

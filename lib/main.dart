@@ -1,15 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:petpas/product/calendar/calendar.dart';
-import 'package:petpas/product/profile/passportScreen.dart';
-import 'package:petpas/product/petList/petAddToList.dart';
-import 'package:petpas/product/petList/petListScreen.dart';
-import 'package:petpas/product/profile/profileScreen.dart';
-import 'package:petpas/product/auth/signInScreen.dart';
-import 'package:petpas/product/auth/signUpScreen.dart';
-import 'package:petpas/product/home/homeScreen.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'manager/firebase_options.dart';
+import 'product/auth/signInScreen.dart';
+import 'product/auth/signUpScreen.dart';
+import 'product/calendar/calendar.dart';
+import 'product/home/homeScreen.dart';
+import 'product/listPet/petAddToList.dart';
+import 'product/listPet/petListScreen.dart';
+import 'product/profile/passportScreen.dart';
+import 'product/profile/profileScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   final GoRouter _router = GoRouter(initialLocation: '/signIn', routes: [
     GoRoute(
       path: '/home',
-      pageBuilder: (context, state) => const MaterialPage(child: HomeScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: HomeView()),
     ),
     GoRoute(
       path: '/signIn',
@@ -67,8 +68,7 @@ class MyApp extends StatelessWidget {
     ),
     GoRoute(
       path: '/profile',
-      pageBuilder: (context, state) =>
-          const MaterialPage(child: ProfileScreen()),
+      pageBuilder: (context, state) => const MaterialPage(child: ProfileView()),
     ),
   ]);
 }

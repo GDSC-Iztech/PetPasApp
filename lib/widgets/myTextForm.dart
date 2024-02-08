@@ -5,8 +5,13 @@ class MyTextForm extends StatefulWidget {
   final String header;
   final IconData? suffixIcon;
   final void Function()? onPressed; // Added onPressed parameter
-  const MyTextForm(
-      {super.key, required this.header, this.suffixIcon, this.onPressed});
+
+  MyTextForm({
+    super.key,
+    required this.header,
+    this.suffixIcon,
+    this.onPressed,
+  });
 
   @override
   State<MyTextForm> createState() => _MyTextFormState();

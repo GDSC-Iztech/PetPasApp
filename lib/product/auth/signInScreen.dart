@@ -1,7 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'signIn_viewmodel.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key, required this.title}) : super(key: key);
@@ -12,19 +15,7 @@ class SignInScreen extends StatefulWidget {
   _SignInScreenState createState() => _SignInScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _firebase = FirebaseAuth.instance;
-  String _enteredEmail = "";
-  String _enteredPassword = "";
-
-  void _submit() {
-    final isValid = _formKey.currentState!.validate();
-    if (isValid) {
-      _formKey.currentState!.save();
-    }
-  }
-
+class _SignInScreenState extends SignInViewmeodel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +26,7 @@ class _SignInScreenState extends State<SignInScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -59,13 +50,16 @@ class _SignInScreenState extends State<SignInScreen> {
                       border: OutlineInputBorder(),
                     ),
                     validator: (value) {
-                      if (value == null || value.trim().isEmpty || !value.contains("@")) {
+                      if (value == null ||
+                          value.trim().isEmpty ||
+                          !value.contains("@")) {
                         return 'Lütfen geçerli bir email giriniz.';
                       }
                       return null;
                     },
                     onSaved: (newValue) {
-                      _enteredEmail = newValue!;
+                      // burayi da viewmodel'in icine atma yolunu bul
+                      enteredEmail = newValue!;
                     },
                   ),
                 ),
@@ -85,7 +79,8 @@ class _SignInScreenState extends State<SignInScreen> {
                       return null;
                     },
                     onSaved: (newValue) {
-                      _enteredPassword = newValue!;
+                      // burayi da viewmodel'in icine atma yolunu bul
+                      enteredPassword = newValue!;
                     },
                   ),
                 ),
@@ -101,16 +96,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         backgroundColor: HexColor("#53A9C6"),
                       ),
-                      onPressed: () async {
-                        try {
-                          _submit();
-                          final userCredentials = await _firebase.signInWithEmailAndPassword(email: _enteredEmail, password: _enteredPassword);
-                          context.go('/home');
-                        } on FirebaseAuthException catch (e) {
-                          ScaffoldMessenger.of(context).clearSnackBars();
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message ?? "Authentication Failed.")));
-                        }
-                      },
+                      onPressed: submit,
                       child: const Text(
                         'Giriş Yap',
                         style: TextStyle(

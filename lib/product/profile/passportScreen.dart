@@ -2,17 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:petpas/constants/constants.dart';
-import 'package:petpas/widgets/myCircleAvatar.dart';
-import 'package:petpas/widgets/myTextForm.dart';
+
+import '../../widgets/myCircleAvatar.dart';
+import '../../widgets/myTextForm.dart';
+import 'passport_viewmodel.dart';
 
 class PassportScreen extends StatefulWidget {
-  const PassportScreen({super.key});
+  final String? name;
+  final String? age;
+  final String? kind;
+  final String? vaccine;
+  final String? imageUrl;
+
+  const PassportScreen({
+    this.name,
+    this.age,
+    this.kind,
+    this.vaccine,
+    this.imageUrl,
+  });
 
   @override
   State<PassportScreen> createState() => _PassportScreenState();
 }
 
-class _PassportScreenState extends State<PassportScreen> {
+class _PassportScreenState extends PassportViewModel {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,14 +34,14 @@ class _PassportScreenState extends State<PassportScreen> {
       appBar: AppBar(
         backgroundColor: HexColor("#53A9C6"),
         centerTitle: true,
-        title: const Text(
-          "Odin'in Pasaportu",
+        title: Text(
+          "${widget.name} Pasaportu",
           style: TextStyle(color: Colors.white),
         ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            context.go('/calender');
+            context.go('/calendar');
           },
         ),
       ),
@@ -41,16 +55,17 @@ class _PassportScreenState extends State<PassportScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MyCircleAvatar(
-                        border: 5,
-                        radius: 75,
-                        backgroundImage: AssetImage("assets/cat.png"),
-                        backgroundColor: appColor.brown),
+                      border: 5,
+                      radius: 75,
+                      backgroundImage: Image.network(widget.imageUrl!).image,
+                      backgroundColor: appColor.brown,
+                    ),
                     const SizedBox(
                       width: 20,
                     ),
                     Expanded(
                       child: Text(
-                        "Ad:Odin\nTür:Saman\nKilo:4.2\nSahibi:Ekin Karahan\nDoğum Tarihi:03/06/2019",
+                        "Ad: ${widget.name}\nTür: ${widget.kind}\nKilo: ${widget.age}\nSahibi: ${widget.vaccine}\nDoğum Tarihi: ${widget.imageUrl}",
                         style: textStyles.headerTextStyle,
                       ),
                     ),
@@ -60,27 +75,28 @@ class _PassportScreenState extends State<PassportScreen> {
                   height: 30,
                 ),
                 Form(
-                    child: Column(
-                  children: [
-                    const MyTextForm(
-                      header: "Mikroçip Numarası",
-                    ),
-                    const MyTextForm(
-                      header: "Kuduza Karşı Aşı",
-                    ),
-                    const MyTextForm(
-                      header: "Ekinokok Tedavisi",
-                    ),
-                    const MyTextForm(
-                      header: "Diğer antiparaziter tedavisi",
-                    ),
-                    MyTextForm(
-                      header: "Tedavi Aşısı Ekle",
-                      onPressed: () {},
-                      suffixIcon: Icons.add_circle_outline,
-                    ),
-                  ],
-                ))
+                  child: Column(
+                    children: [
+                      MyTextForm(
+                        header: "Mikroçip Numarası",
+                      ),
+                      MyTextForm(
+                        header: "Kuduza Karşı Aşı",
+                      ),
+                      MyTextForm(
+                        header: "Ekinokok Tedavisi",
+                      ),
+                      MyTextForm(
+                        header: "Diğer antiparaziter tedavisi",
+                      ),
+                      MyTextForm(
+                        header: "Tedavi Aşısı Ekle",
+                        onPressed: () {},
+                        suffixIcon: Icons.add_circle_outline,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

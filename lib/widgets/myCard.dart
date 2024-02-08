@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:petpas/constants/constants.dart';
-import 'package:petpas/widgets/myCircleAvatar.dart';
+
+import 'myCircleAvatar.dart';
 
 class MyCard extends StatelessWidget {
   const MyCard({super.key});
